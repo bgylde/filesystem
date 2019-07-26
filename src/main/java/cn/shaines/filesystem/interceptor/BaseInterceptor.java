@@ -1,6 +1,6 @@
 package cn.shaines.filesystem.interceptor;
 
-import cn.shaines.filesystem.entity.Visitobject;
+import cn.shaines.filesystem.entity.VisitObject;
 import cn.shaines.filesystem.service.VisitobjectService;
 import cn.shaines.filesystem.util.IdWorker;
 import cn.shaines.filesystem.util.MvcUtil;
@@ -23,11 +23,15 @@ public class BaseInterceptor implements HandlerInterceptor {
 
     private MvcUtil mvcUtil = MvcUtil.get();
 
-    @Autowired
-    private IdWorker idWorker;
+    private final IdWorker idWorker;
+
+    private final VisitobjectService visitobjectService;
 
     @Autowired
-    private VisitobjectService visitobjectService;
+    public BaseInterceptor(IdWorker idWorker, VisitobjectService visitobjectService) {
+        this.idWorker = idWorker;
+        this.visitobjectService = visitobjectService;
+    }
 
     /**
      * controller 执行之前调用
@@ -80,7 +84,7 @@ public class BaseInterceptor implements HandlerInterceptor {
 
         Date date = new Date();
 
-        Visitobject visitobject = new Visitobject();
+        VisitObject visitobject = new VisitObject();
         visitobject.setId(idWorker.nextId());
         visitobject.setIp(mvcUtil.getIpAddress(request));
         visitobject.setDate(date);

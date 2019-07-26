@@ -10,7 +10,7 @@ import java.util.Date;
  * @createTime 2019/3/9 21:54
  */
 @Entity
-public class Visitobject {
+public class VisitObject {
 
     // 主键
     @Id

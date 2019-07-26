@@ -1,7 +1,8 @@
 package cn.shaines.filesystem.service;
 
-import cn.shaines.filesystem.entity.Visitobject;
+import cn.shaines.filesystem.entity.VisitObject;
 import cn.shaines.filesystem.repository.VisitobjectRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +19,7 @@ public class VisitobjectServiceImpl implements VisitobjectService {
     private VisitobjectRepository VisitobjectRepository;
 
     @Override
-    public Visitobject save(Visitobject visitobject) {
+    public VisitObject save(VisitObject visitobject) {
         return VisitobjectRepository.save(visitobject);
     }
 
@@ -28,12 +29,12 @@ public class VisitobjectServiceImpl implements VisitobjectService {
     }
 
     @Override
-    public Page<Visitobject> findAll(Pageable pageable) {
+    public Page<VisitObject> findAll(Pageable pageable) {
         return VisitobjectRepository.findAll(pageable);
     }
 
     @Override
-    public Page<Visitobject> findAllByUriIsContainingOrParamsIsContaining(String uri, String params, Pageable pageable) {
+    public Page<VisitObject> findAllByUriIsContainingOrParamsIsContaining(String uri, String params, Pageable pageable) {
         return VisitobjectRepository.findAllByUriIsContainingOrParamsIsContaining(uri, params, pageable);
     }
 

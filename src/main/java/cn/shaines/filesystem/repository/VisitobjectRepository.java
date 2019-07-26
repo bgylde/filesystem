@@ -1,6 +1,6 @@
 package cn.shaines.filesystem.repository;
 
-import cn.shaines.filesystem.entity.Visitobject;
+import cn.shaines.filesystem.entity.VisitObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,9 +11,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author houyu
  * @createTime 2019/3/9 21:47
  */
-public interface VisitobjectRepository extends JpaRepository<Visitobject, String> {
+public interface VisitobjectRepository extends JpaRepository<VisitObject, String> {
 
 
-    Page<Visitobject> findAllByUriIsContainingOrParamsIsContaining(String uri, String params, Pageable pageable);
+    Page<VisitObject> findAllByUriIsContainingOrParamsIsContaining(String uri, String params, Pageable pageable);
 
 }

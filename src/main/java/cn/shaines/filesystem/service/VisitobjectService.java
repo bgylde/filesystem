@@ -1,6 +1,6 @@
 package cn.shaines.filesystem.service;
 
-import cn.shaines.filesystem.entity.Visitobject;
+import cn.shaines.filesystem.entity.VisitObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -10,7 +10,7 @@ public interface VisitobjectService {
      * 保存
      * @return
      */
-    Visitobject save(Visitobject visitobject);
+    VisitObject save(VisitObject visitobject);
 
     /**
      * 删除
@@ -23,13 +23,13 @@ public interface VisitobjectService {
      * @param pageable
      * @return
      */
-    public Page<Visitobject> findAll(Pageable pageable);
+    public Page<VisitObject> findAll(Pageable pageable);
 
     /**
      * 分页查询
      * @param pageable
      * @return
      */
-    Page<Visitobject> findAllByUriIsContainingOrParamsIsContaining(String uri, String params, Pageable pageable);
+    Page<VisitObject> findAllByUriIsContainingOrParamsIsContaining(String uri, String params, Pageable pageable);
 
 }

@@ -1,6 +1,6 @@
 package cn.shaines.filesystem.controller;
 
-import cn.shaines.filesystem.entity.Visitobject;
+import cn.shaines.filesystem.entity.VisitObject;
 import cn.shaines.filesystem.service.VisitobjectService;
 import cn.shaines.filesystem.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping("/visit")
-public class VisitobjectController {
+public class VisitObjectController {
 
     // ----------------------------------------------------------- //
     // 页面跳转
@@ -47,7 +47,7 @@ public class VisitobjectController {
     public Result page(@RequestParam(defaultValue = "0") int pageIndex, @RequestParam(defaultValue = "5") int pageSize, String name) {
         Sort sort = new Sort(Sort.Direction.DESC, "date");
         Pageable pageable = PageRequest.of(pageIndex, pageSize, sort);
-        Page<Visitobject> page = "".equalsIgnoreCase(name) ? page = visitobjectService.findAll(pageable) : visitobjectService.findAllByUriIsContainingOrParamsIsContaining(name, name, pageable);
+        Page<VisitObject> page = "".equalsIgnoreCase(name) ? page = visitobjectService.findAll(pageable) : visitobjectService.findAllByUriIsContainingOrParamsIsContaining(name, name, pageable);
         return Result.success("请求成功", page);
     }
 

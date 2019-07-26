@@ -1,6 +1,6 @@
 package cn.shaines.filesystem.service;
 
-import cn.shaines.filesystem.entity.Fileobject;
+import cn.shaines.filesystem.entity.FileObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,7 +13,7 @@ public interface FileobjectService {
      * 保存文件
      * @return
      */
-    Fileobject save(Fileobject file);
+    FileObject save(FileObject file);
 
     /**
      * 删除文件
@@ -25,13 +25,13 @@ public interface FileobjectService {
      * 根据id获取文件
      * @return
      */
-    Optional<Fileobject> findById(String id);
+    Optional<FileObject> findById(String id);
 
     /**
      * 根据name获取文件
      * @return
      */
-    Fileobject findByName(String name);
+    FileObject findByName(String name);
 
     /**
      * 分页查询，按上传时间降序
@@ -39,7 +39,7 @@ public interface FileobjectService {
      * @param pageSize
      * @return
      */
-    List<Fileobject> findByIdToPage(int pageIndex, int pageSize);
+    List<FileObject> findByIdToPage(int pageIndex, int pageSize);
 
     /**
      * 根据ids 批量删除
@@ -62,7 +62,7 @@ public interface FileobjectService {
      * @param pageable
      * @return
      */
-    public Page<Fileobject> findAll(Pageable pageable);
+    public Page<FileObject> findAll(Pageable pageable);
 
 
     /**
@@ -70,6 +70,6 @@ public interface FileobjectService {
      * @param pageable
      * @return
      */
-    public Page<Fileobject> findAllByNameIsContaining(String name, Pageable pageable);
+    public Page<FileObject> findAllByNameIsContaining(String name, Pageable pageable);
 
 }

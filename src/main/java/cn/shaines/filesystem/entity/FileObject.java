@@ -8,7 +8,7 @@ import java.util.Date;
  * @createTime 2019/3/9 21:42
  */
 @Entity
-public class Fileobject {
+public class FileObject {
 
     @Id
     @Column(length=30)

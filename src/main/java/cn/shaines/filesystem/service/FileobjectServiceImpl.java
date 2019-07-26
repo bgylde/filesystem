@@ -1,6 +1,6 @@
 package cn.shaines.filesystem.service;
 
-import cn.shaines.filesystem.entity.Fileobject;
+import cn.shaines.filesystem.entity.FileObject;
 import cn.shaines.filesystem.repository.FileobjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,7 +22,7 @@ public class FileobjectServiceImpl implements FileobjectService {
 
 
     @Override
-    public Fileobject save(Fileobject file) {
+    public FileObject save(FileObject file) {
         return fileobjectRepository.save(file);
     }
 
@@ -32,17 +32,17 @@ public class FileobjectServiceImpl implements FileobjectService {
     }
 
     @Override
-    public Optional<Fileobject> findById(String id) {
+    public Optional<FileObject> findById(String id) {
         return fileobjectRepository.findById(id);
     }
 
     @Override
-    public Fileobject findByName(String name) {
+    public FileObject findByName(String name) {
         return fileobjectRepository.findByName(name);
     }
 
     @Override
-    public List<Fileobject> findByIdToPage(int pageIndex, int pageSize) {
+    public List<FileObject> findByIdToPage(int pageIndex, int pageSize) {
         return null;
     }
 
@@ -57,12 +57,12 @@ public class FileobjectServiceImpl implements FileobjectService {
     }
 
     @Override
-    public Page<Fileobject> findAll(Pageable pageable) {
+    public Page<FileObject> findAll(Pageable pageable) {
         return fileobjectRepository.findAll(pageable);
     }
 
     @Override
-    public Page<Fileobject> findAllByNameIsContaining(String name, Pageable pageable) {
+    public Page<FileObject> findAllByNameIsContaining(String name, Pageable pageable) {
         return fileobjectRepository.findAllByNameIsContaining(name, pageable);
     }
 }

@@ -2,10 +2,6 @@ package cn.shaines.filesystem.interceptor;
 
 import cn.shaines.filesystem.annotation.ChainRequired;
 import cn.shaines.filesystem.exception.BusinessException;
-import cn.shaines.filesystem.service.VisitobjectService;
-import cn.shaines.filesystem.util.IdWorker;
-import cn.shaines.filesystem.util.MvcUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -25,14 +21,6 @@ public class ChainInterceptor implements HandlerInterceptor {
 
     @Value("${hostname}")
     private String hostname;
-
-    private MvcUtil mvcUtil = MvcUtil.get();
-
-    @Autowired
-    private IdWorker idWorker;
-
-    @Autowired
-    private VisitobjectService visitobjectService;
 
     /**
      * controller 执行之前调用
