@@ -1,7 +1,7 @@
 package cn.shaines.filesystem.controller;
 
 import cn.shaines.filesystem.entity.VisitObject;
-import cn.shaines.filesystem.service.VisitobjectService;
+import cn.shaines.filesystem.service.VisitObjectService;
 import cn.shaines.filesystem.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Iterator;
+
 /**
  * @author houyu
  * @createTime 2019/3/11 16:18
@@ -21,6 +23,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/visit")
 public class VisitObjectController {
+
+    @Autowired
+    public VisitObjectController(VisitObjectService visitobjectService) {
+        this.visitobjectService = visitobjectService;
+    }
 
     // ----------------------------------------------------------- //
     // 页面跳转
@@ -36,8 +43,7 @@ public class VisitObjectController {
     }
     // ----------------------------------------------------------- //
 
-    @Autowired
-    private VisitobjectService visitobjectService;
+    private final VisitObjectService visitobjectService;
 
     /**
      * 分页查询文件
@@ -47,7 +53,13 @@ public class VisitObjectController {
     public Result page(@RequestParam(defaultValue = "0") int pageIndex, @RequestParam(defaultValue = "5") int pageSize, String name) {
         Sort sort = new Sort(Sort.Direction.DESC, "date");
         Pageable pageable = PageRequest.of(pageIndex, pageSize, sort);
-        Page<VisitObject> page = "".equalsIgnoreCase(name) ? page = visitobjectService.findAll(pageable) : visitobjectService.findAllByUriIsContainingOrParamsIsContaining(name, name, pageable);
+        Page<VisitObject> page = "".equalsIgnoreCase(name) ? visitobjectService.findAll(pageable) : visitobjectService.findAllByUriIsContainingOrParamsIsContaining(name, name, pageable);
+        Iterator<VisitObject> iterable = page.iterator();
+        while (iterable.hasNext()) {
+            VisitObject visitObject = iterable.next();
+            System.out.println(visitObject.toString());
+        }
+
         return Result.success("请求成功", page);
     }
 

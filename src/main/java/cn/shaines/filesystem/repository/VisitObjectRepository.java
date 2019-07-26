@@ -11,9 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author houyu
  * @createTime 2019/3/9 21:47
  */
-public interface VisitobjectRepository extends JpaRepository<VisitObject, String> {
-
-
+public interface VisitObjectRepository extends JpaRepository<VisitObject, String> {
     Page<VisitObject> findAllByUriIsContainingOrParamsIsContaining(String uri, String params, Pageable pageable);
-
 }

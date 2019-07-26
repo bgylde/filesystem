@@ -4,7 +4,7 @@ import cn.shaines.filesystem.entity.VisitObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-public interface VisitobjectService {
+public interface VisitObjectService {
 
     /**
      * 保存

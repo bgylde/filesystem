@@ -1,7 +1,6 @@
 package cn.shaines.filesystem.config;
 
 import cn.shaines.filesystem.interceptor.BaseInterceptor;
-import cn.shaines.filesystem.interceptor.ChainInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -16,13 +15,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-    @Autowired
-    private BaseInterceptor baseInterceptor;
+    private final BaseInterceptor baseInterceptor;
+
+    private final String[] baseExcludePaths = {"/resources/**", "/static/**", "/error/**"};
 
     @Autowired
-    private ChainInterceptor chainInterceptor;
-
-    private String[] baseExcludePaths = {"/resources/**", "/static/**", "/error/**"};
+    public WebMvcConfig(BaseInterceptor baseInterceptor) {
+        this.baseInterceptor = baseInterceptor;
+    }
 
     /**
      * 添加拦截器
@@ -31,8 +31,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         // 添加基础拦截器(日志)
         registry.addInterceptor(baseInterceptor).addPathPatterns("/**").excludePathPatterns(baseExcludePaths);
-        // 添加链路拦截器(防盗链)
-        registry.addInterceptor(chainInterceptor).addPathPatterns("/file/**");
     }
 
     /**
@@ -42,5 +40,4 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
-
 }

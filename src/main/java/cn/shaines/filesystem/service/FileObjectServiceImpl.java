@@ -1,7 +1,7 @@
 package cn.shaines.filesystem.service;
 
 import cn.shaines.filesystem.entity.FileObject;
-import cn.shaines.filesystem.repository.FileobjectRepository;
+import cn.shaines.filesystem.repository.FileObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,10 +15,10 @@ import java.util.Optional;
  * @createTime 2019/3/9 21:49
  */
 @Service
-public class FileobjectServiceImpl implements FileobjectService {
+public class FileObjectServiceImpl implements FileObjectService {
 
     @Autowired
-    private FileobjectRepository fileobjectRepository;
+    private FileObjectRepository fileobjectRepository;
 
 
     @Override

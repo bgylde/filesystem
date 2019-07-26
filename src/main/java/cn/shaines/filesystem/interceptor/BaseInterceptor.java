@@ -1,7 +1,7 @@
 package cn.shaines.filesystem.interceptor;
 
 import cn.shaines.filesystem.entity.VisitObject;
-import cn.shaines.filesystem.service.VisitobjectService;
+import cn.shaines.filesystem.service.VisitObjectService;
 import cn.shaines.filesystem.util.IdWorker;
 import cn.shaines.filesystem.util.MvcUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +25,10 @@ public class BaseInterceptor implements HandlerInterceptor {
 
     private final IdWorker idWorker;
 
-    private final VisitobjectService visitobjectService;
+    private final VisitObjectService visitobjectService;
 
     @Autowired
-    public BaseInterceptor(IdWorker idWorker, VisitobjectService visitobjectService) {
+    public BaseInterceptor(IdWorker idWorker, VisitObjectService visitobjectService) {
         this.idWorker = idWorker;
         this.visitobjectService = visitobjectService;
     }

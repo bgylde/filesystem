@@ -1,6 +1,11 @@
 package cn.shaines.filesystem.entity;
 
 import javax.persistence.*;
+
+import java.net.URI;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.Date;
 
 /**
@@ -69,6 +74,7 @@ public class VisitObject {
     }
 
     public void setUri(String uri) {
+        uri = URLDecoder.decode(uri);
         this.uri = uri;
     }
 

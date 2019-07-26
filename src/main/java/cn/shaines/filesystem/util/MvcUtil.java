@@ -54,7 +54,6 @@ public class MvcUtil {
         return (ip == null || ip.length() == 0 ) ? request.getRemoteAddr() : ip;
     }
 
-
     /**
      * 返回数据
      * @throws IOException

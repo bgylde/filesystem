@@ -2,7 +2,7 @@ package cn.shaines.filesystem.controller;
 
 import cn.shaines.filesystem.annotation.ChainRequired;
 import cn.shaines.filesystem.entity.FileObject;
-import cn.shaines.filesystem.service.FileobjectService;
+import cn.shaines.filesystem.service.FileObjectService;
 import cn.shaines.filesystem.util.IdWorker;
 import cn.shaines.filesystem.util.MyFileUtils;
 import cn.shaines.filesystem.util.StringUtils;
@@ -43,12 +43,12 @@ public class FileObjectController {
 
     private final IdWorker idWorker;
 
-    private final FileobjectService fileobjectService;
+    private final FileObjectService fileobjectService;
 
     private final MyFileUtils fileUtils;
 
     @Autowired
-    FileObjectController(IdWorker idWorker, FileobjectService fileobjectService) {
+    FileObjectController(IdWorker idWorker, FileObjectService fileobjectService) {
         fileUtils = new MyFileUtils();
         this.idWorker = idWorker;
         this.fileobjectService = fileobjectService;

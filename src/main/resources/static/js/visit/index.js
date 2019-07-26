@@ -38,9 +38,10 @@ var TableInit = function () {
             cardView: false, //是否显示详细视图
             detailView: false, //是否显示父子表
             responseHandler: function (res) {// 响应处理
-                oTableInit.totalElements=res.data.totalElements
-                oTableInit.pageIndexNum = res.data.pageable.pageNumber
-                oTableInit.pageSizeNum = res.data.pageable.pageSize
+                console.log(res);
+                oTableInit.totalElements=res.data.totalElements;
+                oTableInit.pageIndexNum = res.data.pageable.pageNumber;
+                oTableInit.pageSizeNum = res.data.pageable.pageSize;
                 return {
                     "total": res.data.totalElements,//总页数
                     "rows": res.data.content   //数据,

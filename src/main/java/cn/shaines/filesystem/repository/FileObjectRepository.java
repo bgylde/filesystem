@@ -14,7 +14,7 @@ import javax.transaction.Transactional;
  * @author houyu
  * @createTime 2019/3/9 21:47
  */
-public interface FileobjectRepository extends JpaRepository<FileObject, String> {
+public interface FileObjectRepository extends JpaRepository<FileObject, String> {
 
     FileObject findByName(String name);
 
