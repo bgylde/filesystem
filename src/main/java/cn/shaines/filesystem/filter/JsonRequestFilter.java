@@ -21,7 +21,7 @@ public class JsonRequestFilter implements Filter {
         if (servletRequest.getContentType() != null && servletRequest.getContentType().contains("application/json")){
             // 如果请求类型是json.那就使用封装的CustomCacheHttpServletRequestWrapper
             filterChain.doFilter(new CustomCacheHttpServletRequestWrapper((HttpServletRequest)servletRequest), servletResponse);
-        }else {
+        } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }

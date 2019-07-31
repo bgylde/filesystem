@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Iterator;
-
 /**
  * @author houyu
  * @createTime 2019/3/11 16:18
@@ -54,14 +52,10 @@ public class VisitObjectController {
         Sort sort = new Sort(Sort.Direction.DESC, "date");
         Pageable pageable = PageRequest.of(pageIndex, pageSize, sort);
         Page<VisitObject> page = "".equalsIgnoreCase(name) ? visitobjectService.findAll(pageable) : visitobjectService.findAllByUriIsContainingOrParamsIsContaining(name, name, pageable);
-        Iterator<VisitObject> iterable = page.iterator();
-        while (iterable.hasNext()) {
-            VisitObject visitObject = iterable.next();
+        for (VisitObject visitObject : page) {
             System.out.println(visitObject.toString());
         }
 
         return Result.success("请求成功", page);
     }
-
-
 }

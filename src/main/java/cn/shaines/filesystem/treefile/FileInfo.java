@@ -1,29 +1,40 @@
 package cn.shaines.filesystem.treefile;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by wangyan on 2019-07-26
  */
 public final class FileInfo {
 
-    private final String absFilePath;
-    private final String fileName;
-
+    @JSONField(ordinal = 1)
     private final boolean isFile;
+    @JSONField(ordinal = 2)
+    private final String fileName;
+    @JSONField(ordinal = 3)
+    private final String absPath;
+    @JSONField(ordinal = 4)
+    private List<FileInfo> children = new ArrayList<FileInfo>();
 
-    private final FileInfo parentFileInfo;
-
-    public FileInfo(String absPath, FileInfo parentFileInfo) {
-        File file = new File(absPath);
-        this.absFilePath = file.getAbsolutePath();
+    public FileInfo(TreeNode treeNode) {
+        File file = new File(treeNode.getData());
+        this.absPath = file.getAbsolutePath();
         this.fileName = file.getName();
         this.isFile = file.isFile();
-        this.parentFileInfo = parentFileInfo;
+
+        TreeNode temp = treeNode.getFirstChild();
+        while (temp != null) {
+            children.add(new FileInfo(temp));
+            temp = temp.getNextSibling();
+        }
     }
 
-    public String getAbsFilePath() {
-        return absFilePath;
+    public String getAbsPath() {
+        return absPath;
     }
 
     public String getFileName() {
@@ -34,7 +45,11 @@ public final class FileInfo {
         return isFile;
     }
 
-    public FileInfo getParentFileInfo() {
-        return parentFileInfo;
+    public List<FileInfo> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<FileInfo> children) {
+        this.children = children;
     }
 }
